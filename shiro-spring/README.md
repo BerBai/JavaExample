@@ -1,21 +1,6 @@
 **目录**
 
-- [Shiro 简介](#_label0)
-    - [为什么是 Shiro？](label0_0)
-    - [Apache Shiro Features 特性](label0_1)
-    - [High-Level Overview 高级概述](label0_2)
-- [自定义 Realm](label1)
-    - [Shiro 加密](label1_0)
-- [SpringBoot 简单实例](label2)
-    - [第一步：新建SpringBoot项目，搭建基础环境](label2_0)
-    - [第二步：新建实体类](label2_1)
-    - [第三步：配置 Shiro](label2_2)
-    - [第四步：准备 DAO 层和 Service 层](label2_3)
-    - [第五步：controller层](label2_4)
-    - [第六步：准备页面](label2_5)
-    - [第七步：测试](label2_6)
-
-
+[TOC]
 
 # Shiro 简介
 
