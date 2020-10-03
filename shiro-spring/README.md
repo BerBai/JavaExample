@@ -1,25 +1,23 @@
 **目录**
 
-- [Shiro 简介](#shiro---)
-  * [为什么是 Shiro？](#-----shiro-)
-  * [Apache Shiro Features 特性](#apache-shiro-features---)
-  * [High-Level Overview 深入概述](#high-level-overview-----)
-    + [Shiro相关类介绍](#shiro-----)
-    + [Shiro 认证过程](#shiro-----)
-    + [Shiro 授权过程](#shiro-----)
-- [自定义 Realm](#----realm)
-  * [Shiro 加密](#shiro---)
-    + [加盐 + 多次加密](#---------)
-- [SpringBoot 简单实例](#springboot-----)
-  * [第一步：新建SpringBoot项目，搭建基础环境](#------springboot---------)
-  * [第二步：新建实体类](#---------)
-  * [第三步：配置 Shiro](#-------shiro)
-  * [第四步：准备 DAO 层和 Service 层](#-------dao----service--)
-  * [第五步：controller层](#----controller-)
-  * [第六步：准备页面](#--------)
-  * [第七步：测试](#------)
-
-
+* [Shiro 简介](#shiro-%E7%AE%80%E4%BB%8B)
+  * [为什么是 Shiro？](#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF-shiro)
+  * [Apache Shiro Features 特性](#apache-shiro-features-%E7%89%B9%E6%80%A7)
+  * [High\-Level Overview 深入概述](#high-level-overview-%E6%B7%B1%E5%85%A5%E6%A6%82%E8%BF%B0)
+    * [Shiro相关类介绍](#shiro%E7%9B%B8%E5%85%B3%E7%B1%BB%E4%BB%8B%E7%BB%8D)
+    * [Shiro 认证过程](#shiro-%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B)
+    * [Shiro 授权过程](#shiro-%E6%8E%88%E6%9D%83%E8%BF%87%E7%A8%8B)
+* [自定义 Realm](#%E8%87%AA%E5%AE%9A%E4%B9%89-realm)
+  * [Shiro 加密](#shiro-%E5%8A%A0%E5%AF%86)
+    * [加盐 \+ 多次加密](#%E5%8A%A0%E7%9B%90--%E5%A4%9A%E6%AC%A1%E5%8A%A0%E5%AF%86)
+* [SpringBoot 简单实例](#springboot-%E7%AE%80%E5%8D%95%E5%AE%9E%E4%BE%8B)
+  * [第一步：新建SpringBoot项目，搭建基础环境](#%E7%AC%AC%E4%B8%80%E6%AD%A5%E6%96%B0%E5%BB%BAspringboot%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83)
+  * [第二步：新建实体类](#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E6%96%B0%E5%BB%BA%E5%AE%9E%E4%BD%93%E7%B1%BB)
+  * [第三步：配置 Shiro](#%E7%AC%AC%E4%B8%89%E6%AD%A5%E9%85%8D%E7%BD%AE-shiro)
+  * [第四步：准备 DAO 层和 Service 层](#%E7%AC%AC%E5%9B%9B%E6%AD%A5%E5%87%86%E5%A4%87-dao-%E5%B1%82%E5%92%8C-service-%E5%B1%82)
+  * [第五步：controller层](#%E7%AC%AC%E4%BA%94%E6%AD%A5controller%E5%B1%82)
+  * [第六步：准备页面](#%E7%AC%AC%E5%85%AD%E6%AD%A5%E5%87%86%E5%A4%87%E9%A1%B5%E9%9D%A2)
+  * [第七步：测试](#%E7%AC%AC%E4%B8%83%E6%AD%A5%E6%B5%8B%E8%AF%95)
 
 # Shiro 简介
 
