@@ -8,7 +8,7 @@ import org.ehcache.config.builders.ResourcePoolsBuilder;
 
 /**
  * @Author 鳄鱼儿
- * @Description TODO
+ * @Description Encache 使用示例
  * @date 2022/9/26 17:49
  * @Version 1.0
  * Encache是一个纯Java的进程内缓存框架，具有快速、精干等特点，是Hibernate中默认的CacheProvider。
