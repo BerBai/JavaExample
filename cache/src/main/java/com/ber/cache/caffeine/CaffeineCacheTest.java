@@ -5,6 +5,7 @@ import com.github.benmanes.caffeine.cache.Caffeine;
 
 import javax.jws.Oneway;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 /**
  * @Author 鳄鱼儿
@@ -35,8 +36,17 @@ public class CaffeineCacheTest {
         loadingCache.put(key, "value");
 
         // 获取value的值，如果key不存在，获取value后再返回
-        String value = loadingCache.get(key, CaffeineCacheTest::getValueFromDB);
-
+        // 方式一：匿名内部类
+        String value = loadingCache.get(key, new Function<String, String>() {
+            @Override
+            public String apply(String s) {
+                return getValueFromDB(s);
+            }
+        });
+        // 方式二：Lambda表达式
+//        String value = loadingCache.get(key, k -> getValueFromDB(k));
+        // :: 调用
+//        String value = loadingCache.get(key, CaffeineCacheTest::getValueFromDB);
         System.out.println(value);
 
         // 删除key
