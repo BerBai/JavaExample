@@ -1,0 +1,9 @@
+docker:
+  host: tcp://192.168.1.17:2375
+  ip: 192.168.1.17
+  # api???docker???????docker version??
+  api_version: 1.41
+  # ?????
+  registry_url: https://index.docker.io/v1/
+  # ????TLS??
+  docker_tls_verify: false
