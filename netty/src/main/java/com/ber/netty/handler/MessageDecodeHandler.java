@@ -24,5 +24,7 @@ public class MessageDecodeHandler extends ByteToMessageDecoder {
         Message message = new Message(content);
         list.add(message);
         in.skipBytes(in.readableBytes());
+        // 使用完，释放ByteBuf。Netty中ByteBuf作为入参，Netty会释放，无需处理
+        frame.release();
     }
 }
