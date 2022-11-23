@@ -1,10 +1,13 @@
 package com.ber.netty.config;
 
+//import com.ber.netty.handler.NettyClientHandler;
 import com.ber.netty.handler.NettyServerHandler;
+import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.channel.socket.nio.NioSocketChannel;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -62,5 +65,25 @@ public class NettyConfig {
                 .childHandler(new NettyServerHandler());
         return serverBootstrap;
     }
+
+    /**
+     * 客户端启动器
+     *
+     * @return
+     */
+//    @Bean
+//    public Bootstrap bootstrap() {
+//        // 新建一组线程池
+//        NioEventLoopGroup eventExecutors = new NioEventLoopGroup(nettyProperties.getBoss());
+//        Bootstrap bootstrap = new Bootstrap()
+//                // 指定线程组
+//                .group(eventExecutors)
+//                .option(ChannelOption.SO_KEEPALIVE, true)
+//                // 指定通道
+//                .channel(NioSocketChannel.class)
+//                // 指定处理器
+//                .handler(new NettyClientHandler());
+//        return bootstrap;
+//    }
 
 }

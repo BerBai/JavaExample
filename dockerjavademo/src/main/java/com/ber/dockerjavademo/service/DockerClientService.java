@@ -40,9 +40,6 @@ public class DockerClientService {
     @Value("${docker.host}")
     private String HOST;
 
-    @Value("${docker.ip}")
-    private String IP;
-
     @Value("${docker.api_version}")
     private String API_VERSION;
     @Value("${docker.registry_url}")

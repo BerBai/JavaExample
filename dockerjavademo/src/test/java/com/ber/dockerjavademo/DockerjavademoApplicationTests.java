@@ -1,5 +1,6 @@
 package com.ber.dockerjavademo;
 
+import com.alibaba.fastjson.JSONObject;
 import com.ber.dockerjavademo.service.DockerClientService;
 import com.github.dockerjava.api.DockerClient;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,10 @@ class DockerjavademoApplicationTests {
     @Test
     void dockerTest() {
         DockerClient dockerClient = dockerClientService.connect();
-        dockerClientService.imageList(dockerClient).stream().forEach(System.out::println);
+        dockerClientService.imageList(dockerClient).stream().forEach((item)->{
+            JSONObject.toJSONString(item);
+            System.out.println(JSONObject.toJSONString(item));
+        });
 //        System.out.println(dockerClientService.pullImage(dockerClient, "nginx:lest"));
 //        dockerClientService.inspectImage(dockerClient, "nginx:latest");
 //        dockerClientService.pullImage(dockerClient, "nginx:latest");
