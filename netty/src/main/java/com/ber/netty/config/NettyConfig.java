@@ -1,7 +1,10 @@
 package com.ber.netty.config;
 
 //import com.ber.netty.handler.NettyClientHandler;
+import com.ber.netty.handler.NettyServerFixedLengthHandler;
 import com.ber.netty.handler.NettyServerHandler;
+import com.ber.netty.handler.NettyServerLenghtFieldBasedHandler;
+import com.ber.netty.handler.NettyServerLineBasedHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelOption;
@@ -61,8 +64,14 @@ public class NettyConfig {
                 .channel(NioServerSocketChannel.class)
                 // 指定连接超时时间
                 .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, nettyProperties.getTimeout())
-                // 指定worker处理器
-                .childHandler(new NettyServerHandler());
+                // 指定分割符处理器 1
+                // .childHandler(new NettyServerHandler());
+                // 指定为固定长度字节的处理器 2
+                // .childHandler(new NettyServerFixedLengthHandler());
+                // 请求头包含数据长度 3
+                // .childHandler(new NettyServerLenghtFieldBasedHandler());
+                // 通过换行符处理沾包/拆包 4
+                .childHandler(new NettyServerLineBasedHandler());
         return serverBootstrap;
     }
 

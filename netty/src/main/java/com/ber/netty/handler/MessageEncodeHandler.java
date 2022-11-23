@@ -21,6 +21,10 @@ public class MessageEncodeHandler extends MessageToByteEncoder<Message> {
         this.delimiter = delimiter;
     }
 
+    public MessageEncodeHandler() {
+
+    }
+
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext, Message message, ByteBuf out) throws Exception {
         out.writeBytes((message.toJsonString() + delimiter).getBytes(CharsetUtil.UTF_8));
