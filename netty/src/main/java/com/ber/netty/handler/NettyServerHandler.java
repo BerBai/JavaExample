@@ -22,7 +22,7 @@ public class NettyServerHandler extends ChannelInitializer<SocketChannel> {
         ByteBuf delimiter = Unpooled.copiedBuffer(delimiterStr.getBytes());
         ChannelPipeline pipeline = socketChannel.pipeline();
         // 使用自定义处理拆包/沾包，并且每次查找的最大长度为1024字节
-        pipeline.addLast(new DelimiterBasedFrameDecoder(1024, delimiter));
+        pipeline.addLast(new DelimiterBasedFrameDecoder(10024, delimiter));
         // 将上一步解码后的数据转码为Message实例
         pipeline.addLast(new MessageDecodeHandler());
         // 对发送客户端的数据进行编码，并添加数据分隔符

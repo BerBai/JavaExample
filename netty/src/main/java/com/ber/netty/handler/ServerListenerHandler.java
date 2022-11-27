@@ -2,10 +2,15 @@ package com.ber.netty.handler;
 
 import com.ber.netty.domain.Message;
 import com.ber.netty.domain.MessageEnum;
+import com.ber.netty.server.ChannelMap;
+import com.ber.netty.service.PushMsgService;
+import com.ber.netty.service.impl.PushMsgServiceImpl;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.util.AttributeKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @Author 鳄鱼儿
@@ -41,6 +46,13 @@ public class ServerListenerHandler extends SimpleChannelInboundHandler<Message> 
         MessageEnum type = MessageEnum.getStructureEnum(msg);
         switch (type) {
             case CONNECT:
+                // 将通道加入ChannelMap
+                ChannelMap.getChannelMap().put(msg.getId(), ctx.channel());
+
+                // 将客户端ID作为自定义属性加入到channel中，方便随时channel中获取用户ID
+                AttributeKey<String> key = AttributeKey.valueOf("id");
+                ctx.channel().attr(key).setIfAbsent(msg.getId());
+
                 // TODO 心跳消息处理
             case STATE:
                 // TODO 设备状态
@@ -57,6 +69,8 @@ public class ServerListenerHandler extends SimpleChannelInboundHandler<Message> 
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) {
         log.info("设备下线了:{}", ctx.channel().id().asLongText());
+        // map中移除channel
+        removeId(ctx);
     }
 
     /**
@@ -69,7 +83,17 @@ public class ServerListenerHandler extends SimpleChannelInboundHandler<Message> 
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         // 打印异常
         log.info("异常：{}", cause.getMessage());
+        // map中移除channel
+        removeId(ctx);
         // 关闭连接
         ctx.close();
+    }
+
+    private void removeId(ChannelHandlerContext ctx) {
+        AttributeKey<String> key = AttributeKey.valueOf("id");
+        // 获取channel中id
+        String id = ctx.channel().attr(key).get();
+        // map移除channel
+        ChannelMap.getChannelMap().remove(id);
     }
 }

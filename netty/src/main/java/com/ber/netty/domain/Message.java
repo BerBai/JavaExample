@@ -10,6 +10,12 @@ import com.alibaba.fastjson2.JSONObject;
  */
 
 public class Message {
+
+
+    /**
+     * 客户端ID
+     */
+    private String id;
     /**
      * 数据长度
      */
@@ -25,11 +31,15 @@ public class Message {
      */
     private Integer msgType;
 
+    public Message() {
+    }
+
     public Message(Object object) {
         String str = object.toString();
         JSONObject jsonObject = JSONObject.parseObject(str);
         msgType = Integer.valueOf(jsonObject.getString("msg_type"));
         content = jsonObject.getString("body");
+        id = jsonObject.getString("unique_id");
         len = str.length();
     }
 
@@ -38,6 +48,14 @@ public class Message {
                 "\"msg_type\": " + msgType + ",\n" +
                 "\"body\": " + content +
                 "}";
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Integer getLen() {
